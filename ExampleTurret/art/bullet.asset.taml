@@ -1,0 +1,6 @@
+<ShapeAsset
+    AssetName="bullet_shape"
+    fileName="@assetFile=@bullet.dae"
+    diffuseImposterFileName="@assetFile=@bullet.dae_imposter.dds"
+    normalImposterFileName="@assetFile=@bullet.dae_imposter_normals.dds"
+    materialSlot0="@asset=ExampleTurret:Turret"/>

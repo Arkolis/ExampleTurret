@@ -1,0 +1,10 @@
+<ImageAsset
+    AssetName="Turret_D"
+    imageFile="@assetFile=@Turret_D.png">
+    <ImageAsset.ImageMetadata>
+        <ImageInfo
+            ImageWidth="4096"
+            ImageHeight="4096"
+            ImageDepth="1"/>
+    </ImageAsset.ImageMetadata>
+</ImageAsset>

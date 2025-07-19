@@ -1,0 +1,17 @@
+<MaterialAsset
+    AssetName="Turret"
+    materialDefinitionName="Turret"
+    VersionId="1">
+    <Material
+        Name="Turret_mat"
+        mapTo="Turret"
+        originalAssetName="Turret_mat">
+        <Material.Stages>
+            <Stages_beginarray
+                DiffuseMapAsset="@asset=ExampleTurret:Turret_D"
+                NormalMapAsset="@asset=ExampleTurret:Turret_N"
+                ORMConfigMapAsset="@asset=ExampleTurret:Turret_ORM"
+                IsSRGb="true"/>
+        </Material.Stages>
+    </Material>
+</MaterialAsset>

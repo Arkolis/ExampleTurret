@@ -1,0 +1,122 @@
+//--- OBJECT WRITE BEGIN ---
+new Scene(NewLevel) {
+   isEditing = "1";
+      enabled = "1";
+
+   new LevelInfo(theLevelInfo) {
+      FogColor = "0.6 0.6 0.7 1";
+      fogDensityOffset = "700";
+      canvasClearColor = "0 0 0 255";
+      soundAmbience = "AudioAmbienceDefault";
+         enabled = "1";
+   };
+   new ScatterSky(DynamicSky) {
+      sunScale = "0.991102 0.921582 0.83077 1";
+      zOffset = "-3000";
+      azimuth = "25";
+      brightness = "5";
+      MoonMatAsset = "Core_Rendering:moon_wglow";
+      useNightCubemap = "1";
+      nightCubemap = "nightCubemap";
+      logWeight = "0.9";
+         mieScattering = "0.0045";
+   };
+   new CloudLayer(SkyClouds) {
+      TextureAsset = "Core_Rendering:clouds_normal_displacement_image";
+      TextureFile = "core/rendering/images/clouds_normal_displacement.png";
+      coverage = "0.25";
+      windSpeed = "0.5";
+      height = "6";
+   };
+   new Skylight(SkyAmbient) {
+      persistentId = "289ad401-3140-11ed-aae8-c0cb519281fc";
+         reflectionPath = "tools/levels/DefaultEditorLevel/probes/";
+   };
+   new NavMesh(Nav) {
+      scale = "250 250 220";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      position = "170.674 31.8849 0.427034";
+      rotation = "0 0 1 69.7082";
+
+      surface = "0 0 0 1 -5.02682 4.28222 1.12221 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 -5.02682 4.28222 -1.12221 0 0 0 1 1 0 0 0";
+      surface = "0.707107 -4.68197e-07 4.68197e-07 0.707107 -5.02682 8.01172 -2.21731e-19 0 0 0 1 1 0 0 0";
+      surface = "4.68197e-07 0.707107 -0.707107 4.68197e-07 -5.02682 0.552724 2.84217e-14 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -6.10705 4.28222 -5.6966e-08 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 -3.94659 4.28222 -5.6966e-08 0 0 0 1 1 0 0 0";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      position = "155.461 25.6069 0.231338";
+      rotation = "0 0 1 69.7082";
+
+      surface = "0 0 0 1 -0.921789 4.95543e-06 0.231336 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 -0.921789 5.05815e-06 -0.231336 0 0 0 1 1 0 0 0";
+      surface = "0.707107 5.99526e-06 -5.99526e-06 0.707107 -0.921789 7.30835 4.54748e-13 0 0 0 1 1 0 0 0";
+      surface = "-5.99526e-06 0.707107 -0.707107 -5.99526e-06 -0.921789 -7.30834 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -1.25923 -7.15256e-07 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 -0.584347 1.07288e-05 0 0 0 0 1 1 0 0 0";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      position = "156.636 18.374 0.18211";
+      rotation = "0 0 1 69.7082";
+
+      surface = "0 0 0 1 0 0 0.18211 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 0 0 -0.18211 0 0 0 1 1 0 0 0";
+      surface = "0.707107 0 0 0.707107 0 5.90288 0 0 0 0 1 1 0 0 0";
+      surface = "0 0.707107 -0.707107 0 0 -5.90288 -2.27374e-13 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -1.67589 0 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 1.67589 0 0 0 0 0 1 1 0 0 0";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      position = "155.942 24.3042 0.231338";
+      rotation = "0 0 1 69.7082";
+
+      surface = "0 0 0 1 -0.921789 4.95543e-06 0.231336 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 -0.921789 5.05815e-06 -0.231336 0 0 0 1 1 0 0 0";
+      surface = "0.707107 5.99526e-06 -5.99526e-06 0.707107 -0.921789 7.30835 4.54748e-13 0 0 0 1 1 0 0 0";
+      surface = "-5.99526e-06 0.707107 -0.707107 -5.99526e-06 -0.921789 -7.30834 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -1.25923 -7.15256e-07 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 -0.584347 1.07288e-05 0 0 0 0 1 1 0 0 0";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      position = "156.462 22.8986 0.231338";
+      rotation = "0 0 1 69.7082";
+
+      surface = "0 0 0 1 -0.921789 4.95543e-06 0.231336 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 -0.921789 5.05815e-06 -0.231336 0 0 0 1 1 0 0 0";
+      surface = "0.707107 5.99526e-06 -5.99526e-06 0.707107 -0.921789 7.30835 4.54748e-13 0 0 0 1 1 0 0 0";
+      surface = "-5.99526e-06 0.707107 -0.707107 -5.99526e-06 -0.921789 -7.30834 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -1.25923 -7.15256e-07 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 -0.584347 1.07288e-05 0 0 0 0 1 1 0 0 0";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      position = "186.304 14.169 0.457495";
+      rotation = "0 0 1 69.7082";
+
+      surface = "0 0 0 1 0 0 7.82813 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 0 0 -7.82813 0 0 0 1 1 0 0 0";
+      surface = "0.707107 0 0 0.707107 0 14.0902 0 0 0 0 1 1 0 0 0";
+      surface = "0 0.707107 -0.707107 0 0 -14.0902 0 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -4.69273 0 -9.22261e-07 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 4.69273 0 -9.22261e-07 0 0 0 1 1 0 0 0";
+   };
+   new ConvexShape() {
+      MaterialAsset = "Prototyping:WallOrange";
+      rotation = "-8.74227e-08 8.74227e-08 -1 90";
+
+      surface = "0 0 0 1 -0.339436 0 0.269774 0 0 0 1 1 0 0 0";
+      surface = "0 1 0 0 -0.339436 0 -5.20133 0 0 0 1 1 0 0 0";
+      surface = "0.707107 0 0 0.707107 -0.339436 6.06459 -2.46578 0 0 0 1 1 0 0 0";
+      surface = "0 0.707107 -0.707107 0 -0.339436 -6.06459 -2.46578 0 0 0 1 1 0 0 0";
+      surface = "0.5 0.5 -0.5 0.5 -4.39931 0 -2.46578 0 0 0 1 1 0 0 0";
+      surface = "0.5 -0.5 0.5 0.5 3.72044 0 -2.46578 0 0 0 1 1 0 0 0";
+   };
+};
+//--- OBJECT WRITE END ---

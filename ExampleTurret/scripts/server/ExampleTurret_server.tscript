@@ -1,0 +1,43 @@
+function tcTurret::onAdd(%this, %obj)
+{
+   Parent::onAdd(%this, %obj);
+   // Mount ShapeBaseImageDatas, Pulled from the same datablock as the Turret.
+   for (%slot=0; %slot<4; %slot++)
+   {
+      //Cycles through each weapon with mountPoints listed and adds them to the turret.
+      %obj.mountImage(t_gun @ %slot, %slot, true);
+      //This sets up the trigger.
+      %obj.setImageTrigger(%slot, false);
+   }
+   //Sets up the Charge rate for "Ammo" of energy based weapons.
+   %obj.setRechargeRate(100);
+}
+
+function ExampleTurret::setSpawnObjectType(%this, %client)
+{
+   // This sets the spawn class and identifies the Turret as the client.
+   %client.spawnClass = "TurretShape";
+   %client.spawnDBType = "TurretShapeData";
+   %client.spawnDataBlock = "tcTurret";
+
+   // This spawns the above object definition and gives client control.
+   %this.setSpawnObjectTypeComplete(%client);
+
+   // This forces 3rd person, since its a Turret we want to see it.
+   ServerConnection.setFirstPerson(false);
+}
+
+function ExampleTurret::setSpawnObjectTypeComplete(%this, %client)
+{
+   %client.getEventManager().postEvent("setSpawnObjectTypeComplete", %client);
+}
+
+function ExampleTurret::onPostSpawn(%this, %client)
+{
+   commandToClient(%client, 'ExampleMoveMap', true);
+}
+
+function ExampleTurret::setSpawnObjectTypeFailed(%this, %client)
+{
+   %client.getEventManager().postEvent("setSpawnObjectTypeFailed", %client);
+}

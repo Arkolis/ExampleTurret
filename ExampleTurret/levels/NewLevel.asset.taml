@@ -1,0 +1,10 @@
+<LevelAsset
+    AssetName="NewLevel"
+    AssetDescription="asdfasdfasdfasdf"
+    LevelFile="@assetFile=NewLevel.mis"
+    LevelName="Test Level"
+    PostFXPresetFile="@assetFile=NewLevel.postfxpreset.tscript"
+    DecalsFile="@assetFile=NewLevel.mis.decals"
+    ForestFile="@assetFile=NewLevel.forest"
+    NavmeshFile="@assetFile=NewLevel.nav"
+    VersionId="1"/>

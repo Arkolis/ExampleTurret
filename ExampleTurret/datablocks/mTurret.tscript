@@ -1,0 +1,183 @@
+// Pulled from the crane and modified to fit this example.
+datablock ProjectileData(turretProjectile)
+{
+   projectileShapeAsset = "ExampleTurret:bullet_shape";
+   directDamage = 10;
+   radiusDamage = 15;
+   damageRadius = 3;
+   areaImpulse = 1200;
+
+   explosion = GrenadeLauncherExplosion;
+   waterExplosion = GrenadeLauncherWaterExplosion;
+
+   decal = ScorchRXDecal;
+   splash = RocketSplash;
+
+   particleEmitter = TurretFireSmokeEmitter;
+
+   muzzleVelocity = 150;
+   velInheritFactor = 0.7;
+
+   armingDelay = 0;
+   lifetime = "4992";
+   fadeDelay = "4480";
+
+   bounceElasticity = 0;
+   bounceFriction = 0;
+   isBallistic = false;
+   gravityMod = 0.80;
+
+   damageType = "RocketDamage";
+};
+
+// Pulled from the crane and modified to fit this example.
+datablock ShapeBaseImageData(t_gun0)
+{
+   // Basic Item properties
+   shapeAsset[0] = "ExampleTurret:mainGun_shape";
+   //emap = true;
+
+   // Specify mount point & offset for 3rd person, and eye offset
+   // for first person rendering.
+   mountPoint = 0;
+   firstPerson = false;
+   accuFire = true;
+   
+   correctMuzzleVector = false;
+   correctMuzzleVectorTP = false;
+
+   // Add the WeaponImage namespace as a parent, WeaponImage namespace
+   // provides some hooks into the inventory system.
+   className = "WeaponImage";
+   class = "WeaponImage";
+
+   // Projectile and Ammo
+   //ammo = BulletAmmo;
+
+   projectile = turretProjectile;
+   projectileType = Projectile;
+   projectileSpread = "0.06";
+
+   // Weapon lights up while firing
+   lightColor = "0.992126 0.968504 0.708661 1";
+   lightRadius = "4";
+   lightDuration = "100";
+   lightType = "WeaponFireLight";
+   lightBrightness = 2;
+
+   // Shake camera while firing.
+   shakeCamera = false;
+
+   // Images have a state system which controls how the animations
+   // are run, which sounds are played, script callbacks, etc. This
+   // state system is downloaded to the client so that clients can
+   // predict state changes and animate accordingly.  The following
+   // system supports basic ready->fire->reload transitions as
+   // well as a no-ammo->dryfire idle state.
+
+   useRemainderDT = true;
+
+   // Initial start up state
+   stateName[0]                     = "Preactivate";
+   stateTransitionOnLoaded[0]       = "Activate";
+   stateTransitionOnNoAmmo[0]       = "NoAmmo";
+
+   // Activating the gun.  Called when the weapon is first
+   // mounted and there is ammo.
+   stateName[1]                     = "Activate";
+   stateTransitionOnTimeout[1]      = "Ready";
+   stateTimeoutValue[1]             = 0.5;
+   stateSequence[1]                 = "Activate";
+
+   // Ready to fire, just waiting for the trigger
+   stateName[2]                     = "Ready";
+   stateTransitionOnNoAmmo[2]       = "NoAmmo";
+   stateTransitionOnTriggerDown[2]  = "Fire";
+
+   // Fire the weapon. Calls the fire script which does
+   // the actual work.
+   stateName[3]                     = "Fire";
+   stateTransitionOnTimeout[3]      = "Reload";
+   stateTimeoutValue[3]             = 0.16;
+   stateFire[3]                     = true;
+   stateRecoil[3]                   = "";
+   stateAllowImageChange[3]         = false;
+   stateSequence[3]                 = "Fire";
+   stateSequenceRandomFlash[3]      = true;        // use muzzle flash sequence
+   stateScript[3]                   = "onFire";
+   stateSoundAsset[3]               = "Cheetah:CheetahTurretFireSound";
+   stateEmitter[3]                  = TurretFireSmokeEmitter;
+   stateEmitterTime[3]              = 0.025;
+
+   // Play the reload animation, and transition into
+   stateName[4]                     = "Reload";
+   stateTransitionOnNoAmmo[4]       = "NoAmmo";
+   stateWaitForTimeout[4]           = "0";
+   stateTransitionOnTimeout[4]      = "Ready";
+   stateTimeoutValue[4]             = 0.16;
+   stateAllowImageChange[4]         = false;
+   stateSequence[4]                 = "Reload";
+   //stateEjectShell[4]               = true;
+
+   // No ammo in the weapon, just idle until something
+   // shows up. Play the dry fire sound if the trigger is
+   // pulled.
+   stateName[5]                     = "NoAmmo";
+   stateTransitionOnAmmo[5]         = "Reload";
+   stateSequence[5]                 = "NoAmmo";
+   stateTransitionOnTriggerDown[5]  = "DryFire";
+
+   // No ammo dry fire
+   stateName[6]                     = "DryFire";
+   stateTimeoutValue[6]             = 0.33;
+   stateTransitionOnTimeout[6]      = "NoAmmo";
+   stateScript[6]                   = "onDryFire";
+   
+	usesEnergy = true;
+	minEnergy = 0.0;
+   inheritEnergyFromMount = true;
+   infiniteAmmo = true;
+};
+
+datablock ShapeBaseImageData(t_gun1 : t_gun0)
+{
+   mountPoint = 1;
+};
+
+datablock ShapeBaseImageData(t_gun2 : t_gun0)
+{
+   mountPoint = 2;
+};
+
+datablock ShapeBaseImageData(t_gun3 : t_gun0)
+{
+   mountPoint = 3;
+};
+
+datablock TurretShapeData(tcTurret)
+{
+	shapeAsset = "ExampleTurret:mainTurret_shape";
+   zRotOnly = true; //Example model rotation is on Z so this doesn't change anything (that I've found).
+   
+   sticky = true; //Since The example is using this as the player, I wanted this to stick to the ground, otherwise you can use the explosions to move around.
+   mass = 600; //Make it heavy
+
+   maxHeading = 90; //Max turn in either direction, 0-180
+   mPitchAllowed = true; //Allows the Pitch
+   mHeadingAllowed = true; // Allows Z rotation on the turret
+   allowManualFire = true; // Allows the Turret to be fired manually, since its not AI it won't fire without this.
+   minPitch = 45; //Max angle pointed down.
+   maxPitch = 90; //Max angle pointing up.
+   headingRate = 20; //Speed at which you turn on the Heading.
+   pitchRate = 20; //Speed at which you turn on the Pitch.
+   cameraOffset = 0;
+   headingNode = "heading"; //Bone or Empty Name marking the Heading turn point.
+   pitchNode = "pitch"; //Bone or Empty Name marking the Pitch 
+
+   numWeaponMountPoints = 4; //Not entirely sure this is necessary.
+   weaponLinkType = "GroupedFire"; //Fires 0,3 and 1,2
+   
+   startLoaded = true;
+   maxEnergy = 1000; //Necessary or the guns won't fire. Example guns are Energy Based.
+   maxDamage = 1000; //Max Damage the Turret can take.
+};

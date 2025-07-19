@@ -1,0 +1,6 @@
+<ShapeAsset
+    AssetName="mainGun_shape"
+    fileName="@assetFile=MainGun_Sample.dae"
+    constuctorFileName="@assetFile=turret_gun.tscript"
+    materialSlot0="@asset=ExampleTurret:Crane_MuzzleFlash_mat"
+    materialSlot1="@asset=ExampleTurret:Turret"/>

@@ -1,0 +1,14 @@
+<ModuleDefinition
+    ModuleId="ExampleTurret"
+    VersionId="1"
+    Group="Game"
+    scriptFile="ExampleTurret.tscript"
+    CreateFunction="onCreate"
+    DestroyFunction="onDestroy"
+    Priority="1.1">
+    <DeclaredAssets
+        canSave="true"
+        canSaveDynamicFields="true"
+        Extension="asset.taml"
+        Recurse="true"/>
+</ModuleDefinition>
