@@ -1,0 +1,10 @@
+
+function mainGun_shape::onLoad(%this)
+{
+   %this.renameSequence("ambient", "__backup__ambient_1");
+   %this.addSequence("ambient", "Activate", "0", "1", "1", "0");
+   %this.removeSequence("__backup__ambient_1");
+   %this.addSequence("ambient", "Reload", "0", "1", "1", "0");
+   %this.addSequence("ambient", "NoAmmo", "0", "1", "1", "0");
+   %this.addSequence("ambient", "Fire", "1", "2", "1", "0");
+}

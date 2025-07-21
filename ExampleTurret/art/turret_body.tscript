@@ -1,14 +1,9 @@
-singleton TSShapeConstructor(mainTurretdae)
+singleton TSShapeConstructor(mainTurret_shapedae)
 {
    baseShapeAsset = "ExampleTurret:mainTurret_shape";
-   singleDetailSize = "0";
-   neverImportMat = "DefaultMaterial	ColorEffect*";
-   flipUVCoords = "0";
-   reverseWindingOrder = "0";
-   removeRedundantMats = "0";
+   originalAssetName = "mainTurret_shape";
 };
 
-function mainTurretdae::onLoad(%this)
+function mainTurret_shapedae::onLoad(%this)
 {
-   echo("Main turret loaded.");
 }
