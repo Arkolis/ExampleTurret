@@ -1,6 +1,8 @@
 <ShapeAsset
     AssetName="mainGun_shape"
-    fileName="@assetFile=MainGun_Sample.dae"
-    constuctorFileName="@assetFile=turret_gun.tscript"
+    fileName="@assetFile=@MainGun_Sample.dae"
+    constuctorFileName="@assetFile=@turret_gun.tscript"
+    diffuseImposterFileName="@assetFile=@MainGun_Sample.dae_imposter.dds"
+    normalImposterFileName="@assetFile=@MainGun_Sample.dae_imposter_normals.dds"
     materialSlot0="@asset=ExampleTurret:Crane_MuzzleFlash_mat"
     materialSlot1="@asset=ExampleTurret:Turret"/>

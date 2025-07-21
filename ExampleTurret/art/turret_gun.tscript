@@ -1,26 +1,23 @@
-
+//--- Constructor for the Turret gun, while it does have animations, its currently not working.
 singleton TSShapeConstructor(turretgundae)
 {
    baseShapeAsset = "ExampleTurret:mainGun_shape";
    singleDetailSize = "0";
    neverImportMat = "DefaultMaterial	ColorEffect*";
    flipUVCoords = "0";
-   joinIdenticalVerts = "0";
-   reverseWindingOrder = "0";
-   removeRedundantMats = "0";
    animFPS = "2";
 };
 
 function turretgundae::onLoad(%this)
 {
-   echo("Calling Turetgundae");
+   echo("Setting up" @ %this);
    %this.setSequenceCyclic("ambient", "0");
    %this.addSequence("ambient", "Activate", "0", "1", "1", "0");
-   %this.setSequenceCyclic("activate", "0");
+   %this.setSequenceCyclic("Activate", "0");
    %this.addSequence("ambient", "Reload", "0", "1", "1", "0");
    %this.setSequenceCyclic("Reload", "0");
    %this.addSequence("ambient", "NoAmmo", "0", "1", "1", "0");
    %this.setSequenceCyclic("NoAmmo", "0");
-   %this.addSequence("ambient", "fire", "1", "6", "1", "0");
-   %this.setSequenceCyclic("fire", "0");
+   %this.addSequence("ambient", "Fire", "1", "6", "1", "0");
+   %this.setSequenceCyclic("Fire", "0");
 }
